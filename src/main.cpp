@@ -159,7 +159,6 @@ void updateLatLon(){
       Serial.print(gps.time.minute()); Serial.print(":");
       Serial.println(gps.time.second());
       Serial.println("---------------------------");
-      Serial.println("FunCheck3");
     }
 }
 
