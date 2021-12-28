@@ -7,8 +7,8 @@
 #include "index.h"
 
 #define M_PI 3.14159265358979323846264338327950288
-#define rxGPS 5
-#define txGPS 16
+#define rxGPS 4
+#define txGPS 5
 
 const double fences[1][10][2] = {{{17.529188, 78.361845},
                                   {17.529840, 78.361919},
@@ -109,8 +109,8 @@ void connectWifi(){
         Serial.println("------------------------------------------------");
     }
     else{
-        String ssid = "vikas_phone";
-        String password = "addepalliVikas";
+        String ssid = "xxxxxxxxxxxxxx"; //Access point ssid
+        String password = "xxxxxxxxxxxxxxx"; //Access point password
         WiFi.begin(ssid,password);
         Serial.println("------------------------------------------------");
         Serial.print("Connecting to Access Point ");
@@ -128,12 +128,8 @@ void connectWifi(){
 }
 
 void updateLatLon(){
-    Serial.print(gpsSerial.read());
-    Serial.print("    ");
-    Serial.println(gps.encode(gpsSerial.read()));
     if (gps.encode(gpsSerial.read()))
     {  
-      //Serial.println("FunCheck2");
       sat = gps.satellites.value();
       latitude = gps.location.lat();
       longitude = gps.location.lng();
@@ -159,6 +155,7 @@ void updateLatLon(){
       Serial.print(gps.time.minute()); Serial.print(":");
       Serial.println(gps.time.second());
       Serial.println("---------------------------");
+      delay(1000);
     }
 }
 
